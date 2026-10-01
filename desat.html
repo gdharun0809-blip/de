@@ -1,0 +1,1960 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DESAT INFO TECH</title>
+
+<style>
+:root{
+--bg:#f7fbff;
+--panel:rgba(255,255,255,.82);
+--text:#000;
+--muted:#2f4052;
+--line:#dce8f2;
+--accent:#08b88a;
+--accent2:#3186e8;
+--gold:#d79b21
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+margin:0;
+background:#f7fbff;
+color:var(--text);
+font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+overflow-x:hidden
+}
+
+body:before,body:after{
+content:"";
+position:fixed;
+pointer-events:none;
+border-radius:50%;
+z-index:-1;
+filter:blur(2px)
+}
+
+body:before{
+width:420px;
+height:420px;
+left:-120px;
+top:120px;
+background:radial-gradient(circle,rgba(49,134,232,.18),transparent 68%);
+animation:floatA 12s ease-in-out infinite alternate
+}
+
+body:after{
+width:500px;
+height:500px;
+right:-150px;
+top:420px;
+background:radial-gradient(circle,rgba(8,184,138,.16),transparent 68%);
+animation:floatB 15s ease-in-out infinite alternate
+}
+
+@keyframes floatA{
+from{transform:translate3d(0,0,0) scale(1)}
+to{transform:translate3d(130px,90px,0) scale(1.18)}
+}
+
+@keyframes floatB{
+from{transform:translate3d(0,0,0) scale(1)}
+to{transform:translate3d(-110px,-80px,0) scale(1.2)}
+}
+
+/* NAVIGATION */
+
+.admin-top-link{
+padding:10px 14px;
+border:1px solid #b9d1e5;
+border-radius:999px;
+color:#087e66;
+font-size:12px;
+font-weight:800;
+white-space:nowrap;
+background:rgba(255,255,255,.8);
+box-shadow:0 8px 25px rgba(35,83,120,.08)
+}
+
+.admin-top-link:hover{
+background:var(--accent);
+color:#fff;
+box-shadow:0 10px 30px rgba(8,184,138,.25)
+}
+
+.nav{
+position:sticky;
+top:0;
+z-index:20;
+background:rgba(255,255,255,.78);
+backdrop-filter:blur(18px);
+border-bottom:1px solid #dce8f2
+}
+
+.wrap{
+width:min(1180px,92%);
+margin:auto
+}
+
+.brand{
+font-weight:900;
+letter-spacing:.06em;
+color:#102033;
+text-decoration:none;
+display:flex;
+align-items:center;
+gap:9px
+}
+
+.logo-mark{
+width:38px;
+height:38px;
+flex:0 0 38px;
+border-radius:12px;
+display:grid;
+place-items:center;
+background:linear-gradient(135deg,#08b88a 0%,#3186e8 100%);
+color:#fff;
+position:relative;
+box-shadow:0 10px 28px rgba(49,134,232,.24);
+overflow:hidden;
+transition:.35s
+}
+
+.logo-mark:before{
+content:"";
+position:absolute;
+width:24px;
+height:24px;
+border:2px solid rgba(255,255,255,.9);
+border-radius:8px;
+transform:rotate(45deg)
+}
+
+.logo-mark span{
+font-size:19px;
+font-weight:950;
+position:relative;
+z-index:1
+}
+
+.brand:hover .logo-mark{
+transform:rotate(-4deg) scale(1.08);
+box-shadow:0 14px 34px rgba(8,184,138,.28)
+}
+
+.links a{
+color:#5c6f84;
+text-decoration:none;
+font-size:12px;
+font-weight:700;
+margin-left:18px
+}
+
+.links a:hover{
+color:var(--accent)
+}
+
+/* SECTIONS */
+
+section{
+padding:105px 0;
+border-bottom:1px solid rgba(110,145,175,.12)
+}
+
+.hero{
+min-height:720px;
+display:grid;
+align-items:center;
+padding:120px 0 100px
+}
+
+.hero-grid{
+display:grid;
+grid-template-columns:1.05fr .95fr;
+gap:65px;
+align-items:center
+}
+
+.eyebrow,.kicker{
+color:var(--accent);
+font-size:11px;
+font-weight:900;
+letter-spacing:.16em
+}
+
+.hero h1{
+font-size:clamp(48px,6vw,82px);
+line-height:.98;
+letter-spacing:-.055em;
+margin:18px 0 24px;
+max-width:760px
+}
+
+.hero p,.section-head p{
+color:var(--muted);
+line-height:1.85;
+max-width:720px
+}
+
+.actions{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:32px
+}
+
+.btn{
+display:inline-block;
+padding:13px 18px;
+border:1px solid #b9d1e5;
+border-radius:10px;
+color:#28415a;
+text-decoration:none;
+background:rgba(255,255,255,.72);
+font-weight:800;
+font-size:12px;
+transition:.3s
+}
+
+.btn:hover{
+transform:translateY(-3px);
+border-color:var(--accent);
+box-shadow:0 10px 25px rgba(35,83,120,.10)
+}
+
+.btn.primary{
+background:linear-gradient(135deg,var(--accent),#4fdbb3);
+border:0;
+color:#fff;
+box-shadow:0 12px 35px rgba(8,184,138,.18)
+}
+
+/* ANALYTICS MONITOR */
+
+.monitor,.card,.service,.job,.step,.workflow{
+background:rgba(255,255,255,.78);
+border:1px solid var(--line);
+box-shadow:0 25px 80px rgba(35,83,120,.10)
+}
+
+.monitor{
+padding:28px;
+border-radius:24px;
+position:relative;
+overflow:hidden
+}
+
+.monitor:after{
+content:"";
+position:absolute;
+width:230px;
+height:230px;
+border-radius:50%;
+right:-100px;
+top:-100px;
+background:rgba(8,184,138,.12);
+filter:blur(10px);
+animation:floatB 9s ease-in-out infinite alternate
+}
+
+.metric{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin:28px 0
+}
+
+.metric div{
+padding:18px 12px;
+border:1px solid #dce8f2;
+border-radius:14px;
+background:rgba(246,251,255,.85)
+}
+
+.metric b{
+display:block;
+font-size:24px
+}
+
+.metric span{
+display:block;
+color:#7890aa;
+font-size:9px;
+margin-top:5px
+}
+
+.chart{
+height:150px;
+margin-top:20px;
+border-radius:14px;
+background:
+linear-gradient(180deg,rgba(8,184,138,.10),transparent),
+repeating-linear-gradient(
+0deg,
+transparent 0 29px,
+rgba(67,103,135,.07) 30px
+),
+linear-gradient(
+135deg,
+transparent 0 20%,
+rgba(8,184,138,.16) 21% 22%,
+transparent 23% 40%,
+rgba(49,134,232,.18) 41% 42%,
+transparent 43%
+);
+position:relative
+}
+
+.chart:after{
+content:"";
+position:absolute;
+left:0;
+right:0;
+top:62%;
+height:2px;
+background:linear-gradient(
+90deg,
+transparent,
+var(--accent),
+var(--accent2),
+transparent
+);
+transform:rotate(-7deg);
+box-shadow:0 0 15px rgba(8,184,138,.35);
+animation:chartMove 4s ease-in-out infinite alternate
+}
+
+@keyframes chartMove{
+from{
+transform:rotate(-10deg) translateY(8px)
+}
+to{
+transform:rotate(4deg) translateY(-8px)
+}
+}
+
+/* HEADINGS */
+
+.section-head{
+margin-bottom:45px
+}
+
+.section-head h2{
+font-size:clamp(32px,4vw,52px);
+line-height:1.05;
+letter-spacing:-.04em;
+margin:12px 0 15px
+}
+
+/* CARDS */
+
+.two{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px
+}
+
+.card,.service,.job,.step{
+padding:28px;
+border-radius:18px;
+transition:.4s
+}
+
+.card:hover,
+.service:hover,
+.job:hover,
+.step:hover{
+transform:translateY(-8px);
+border-color:rgba(8,184,138,.4);
+box-shadow:
+0 25px 70px rgba(35,83,120,.16),
+0 0 30px rgba(8,184,138,.08)
+}
+
+.card h3,
+.service h3,
+.job h3,
+.step h3{
+font-size:20px;
+margin:13px 0
+}
+
+.card p,
+.service p,
+.job p,
+.step p{
+color:var(--muted);
+line-height:1.75
+}
+
+/* MINI GRID */
+
+.mini-grid,.process{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px;
+margin-top:20px
+}
+
+.mini-grid>div{
+padding:20px;
+border:1px solid #dce8f2;
+border-radius:14px;
+background:rgba(255,255,255,.68);
+transition:.35s
+}
+
+.mini-grid>div:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 35px rgba(35,83,120,.09)
+}
+
+.mini-grid p{
+color:var(--muted);
+line-height:1.5;
+font-size:13px
+}
+
+/* SERVICES */
+
+.services,.career{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px
+}
+
+.num{
+color:var(--accent);
+font-size:10px;
+font-weight:900;
+letter-spacing:.12em
+}
+
+.service{
+min-height:210px
+}
+
+.career{
+margin-top:20px
+}
+
+.job{
+min-height:210px
+}
+
+/* PROCESS */
+
+.process{
+grid-template-columns:repeat(4,1fr)
+}
+
+.step strong{
+color:var(--accent2);
+font-size:11px;
+letter-spacing:.1em
+}
+
+/* WORKFLOW */
+
+.workflow{
+padding:38px;
+border-radius:25px
+}
+
+.flowline{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin:30px 0
+}
+
+.flowline div{
+text-align:center;
+padding:18px 10px;
+border:1px solid #cfe0ed;
+border-radius:12px;
+color:#35516d;
+font-weight:900;
+font-size:11px;
+background:rgba(240,250,255,.72);
+transition:.35s
+}
+
+.flowline div:hover{
+transform:scale(1.03);
+border-color:var(--accent)
+}
+
+/* CONTACT */
+
+.contact{
+display:grid;
+grid-template-columns:.8fr 1.2fr;
+gap:35px
+}
+
+.details{
+display:grid;
+gap:12px
+}
+
+.detail{
+padding:20px;
+border:1px solid #dce8f2;
+border-radius:14px;
+background:rgba(255,255,255,.68);
+color:#304960
+}
+
+.detail small,label{
+display:block;
+color:#7791ac;
+font-size:10px;
+font-weight:900;
+letter-spacing:.1em
+}
+
+.detail a{
+color:var(--accent);
+text-decoration:none
+}
+
+.contact form{
+display:grid;
+gap:14px;
+padding:25px;
+border:1px solid var(--line);
+border-radius:20px;
+background:rgba(255,255,255,.72)
+}
+
+input,textarea{
+width:100%;
+margin-top:7px;
+padding:13px;
+border:1px solid #c9dbea;
+border-radius:9px;
+background:#fff;
+color:#1d3145;
+outline:none
+}
+
+input:focus,textarea:focus{
+border-color:var(--accent);
+box-shadow:0 0 0 3px rgba(8,184,138,.10)
+}
+
+/* FOOTER */
+
+footer{
+padding:55px 0;
+background:#eef6fb;
+color:#60758b
+}
+
+.foot{
+display:grid;
+grid-template-columns:1.4fr 1fr 1fr;
+gap:30px
+}
+
+.foot a{
+color:#4e789c
+}
+
+/* REVEAL ANIMATION */
+
+.reveal{
+opacity:0;
+transform:translateY(45px) scale(.98);
+transition:
+opacity .8s ease,
+transform .8s cubic-bezier(.2,.8,.2,1)
+}
+
+.reveal.show{
+opacity:1;
+transform:none
+}
+
+/* ADMIN LOGIN */
+
+.admin-page{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:40px 20px;
+background:rgba(247,251,255,.96)
+}
+
+.admin-card{
+width:min(430px,100%);
+background:#fff;
+border:1px solid var(--line);
+border-radius:20px;
+padding:34px;
+box-shadow:0 25px 80px rgba(35,83,120,.15)
+}
+
+.admin-logo{
+width:52px;
+height:52px;
+border:1px solid #b9d1e5;
+border-radius:14px;
+display:grid;
+place-items:center;
+color:var(--accent);
+font-weight:900;
+background:linear-gradient(135deg,#effaff,#fff);
+margin-bottom:22px
+}
+
+.admin-card h1{
+margin:0 0 8px;
+font-size:30px
+}
+
+.admin-card p{
+color:var(--muted);
+font-size:14px;
+line-height:1.6
+}
+
+.admin-card form{
+margin-top:24px
+}
+
+.admin-card .back{
+display:inline-block;
+margin-top:18px;
+color:var(--accent);
+font-size:13px
+}
+
+.admin-msg{
+font-size:12px;
+color:#d34c4c;
+min-height:18px
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+
+.hero-grid,
+.two,
+.contact{
+grid-template-columns:1fr
+}
+
+.links{
+display:none
+}
+
+.services,
+.career{
+grid-template-columns:1fr 1fr
+}
+
+.mini-grid,
+.process{
+grid-template-columns:1fr 1fr
+}
+
+.flowline,
+.foot{
+grid-template-columns:1fr 1fr
+}
+
+.hero h1{
+font-size:48px
+}
+
+}
+
+@media(max-width:520px){
+
+.services,
+.career,
+.mini-grid,
+.process,
+.flowline,
+.foot{
+grid-template-columns:1fr
+}
+
+.hero{
+min-height:auto;
+padding-top:80px
+}
+
+.hero h1{
+font-size:42px
+}
+
+.metric{
+grid-template-columns:1fr
+}
+
+.nav .wrap{
+padding:8px 0
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header class="nav">
+<div class="wrap" style="display:flex;width:100%;align-items:center;justify-content:space-between">
+
+<a class="brand" href="#home">
+<span class="logo-mark" aria-hidden="true">
+<span>D</span>
+</span>
+DESAT INFO TECH
+</a>
+
+<nav class="links">
+<a href="#home">Home</a>
+<a href="#vision">Vision & Mission</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#careers">Careers</a>
+<a href="#analytics">Data Analytics</a>
+<a href="#internship">Internship</a>
+<a href="#contact">Contact Us</a>
+</nav>
+
+<div style="display:flex;align-items:center;gap:10px">
+<a class="admin-top-link" href="#admin-login">Admin Login</a>
+<a class="menu" href="#contact">☰</a>
+</div>
+
+</div>
+</header>
+
+<main id="home">
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="wrap hero-grid">
+
+<div class="reveal">
+
+<div class="eyebrow">
+DESAT INFO TECH • SALEM
+</div>
+
+<h1>
+Technology, Data & Digital Solutions.
+</h1>
+
+<p>
+DESAT INFO TECH works across enterprise resource planning workflows,
+data analytics, SAS-based analytical processes, cloud-enabled operations,
+and practical technology learning. The environment connects business
+processes with data, reporting, analytics, and modern cloud workflows.
+</p>
+
+<div class="actions">
+
+<a class="btn primary" href="#services">
+Explore Services
+</a>
+
+<a class="btn" href="#careers">
+View Career Opportunities
+</a>
+
+</div>
+
+</div>
+
+<!-- ANALYTICS CARD -->
+
+<div class="monitor reveal">
+
+<div class="monitor-top">
+<span>DESAT ANALYTICS SUITE</span>
+<span class="live">● LIVE MONITOR</span>
+</div>
+
+<h3>
+Data Intelligence Enterprise Overview
+</h3>
+
+<div class="metric">
+
+<div>
+<b>2.4M</b>
+<span>RECORDS CLEANED</span>
+</div>
+
+<div>
+<b>99.2%</b>
+<span>ACCURACY RATE</span>
+</div>
+
+<div>
+<b>150+</b>
+<span>PROJECTS</span>
+</div>
+
+</div>
+
+<div class="monitor-top">
+<span>Analytics Growth Metric</span>
+<span>Performance Trajectory</span>
+</div>
+
+<div class="chart"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- VISION -->
+
+<section id="vision">
+
+<div class="wrap">
+
+<div class="section-head reveal">
+
+<div class="kicker">
+FOUNDATION & PURPOSE
+</div>
+
+<h2>
+Our Vision & Mission
+</h2>
+
+<p>
+Guiding DESAT INFO TECH toward continuous technological advancement
+and practical learning excellence.
+</p>
+
+</div>
+
+<div class="two">
+
+<article class="card reveal">
+
+<div>👁️</div>
+
+<h3>
+Company Vision
+</h3>
+
+<p>
+To become a premier technological and data analytics beacon in Salem
+and across South India, bridging the gap between theoretical knowledge
+and real-world industrial demand through innovative solutions and
+practical learning ecosystems.
+</p>
+
+<ul>
+
+<li>
+Pioneering accessible, industry-relevant IT education and analytics.
+</li>
+
+<li>
+Empowering businesses with modern data-driven insight frameworks.
+</li>
+
+<li>
+Building a collaborative hub for future tech leaders and innovators.
+</li>
+
+</ul>
+
+</article>
+
+<article class="card reveal">
+
+<div>🎯</div>
+
+<h3>
+Company Mission
+</h3>
+
+<p>
+Our mission is to empower individuals and organizations with robust
+technical skills, actionable data analytics capabilities, and practical
+IT competencies that foster career advancement and business digital
+transformation.
+</p>
+
+<ul>
+
+<li>
+Deliver high-impact hands-on training and internship programs.
+</li>
+
+<li>
+Provide tailor-made data preprocessing, visualization, and IT consulting.
+</li>
+
+<li>
+Maintain rigorous quality, integrity, and continuous technological adoption.
+</li>
+
+</ul>
+
+</article>
+
+</div>
+
+<div class="mini-grid">
+
+<div>
+<b>Excellence</b>
+<p>
+Technical precision and clarity in every solution.
+</p>
+</div>
+
+<div>
+<b>Practicality</b>
+<p>
+Real-world tools, datasets, and industry workflows.
+</p>
+</div>
+
+<div>
+<b>Innovation</b>
+<p>
+Modern data frameworks and technology practices.
+</p>
+</div>
+
+<div>
+<b>Integrity</b>
+<p>
+Transparency, trust, and quality in student & business relations.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="wrap">
+
+<div class="section-head reveal">
+
+<div class="kicker">
+ABOUT DESAT INFO TECH
+</div>
+
+<h2>
+Technology with a practical, outcome-driven approach.
+</h2>
+
+<p>
+DESAT INFO TECH is strategically located in Salem, Tamil Nadu.
+We provide an environment deeply connected with information technology,
+modern software concepts, and practical industry workflows.
+</p>
+
+</div>
+
+<div class="two">
+
+<article class="card reveal">
+
+<span class="num">
+01 • CORE FOCUS
+</span>
+
+<h3>
+Information Technology Excellence
+</h3>
+
+<p>
+Our technology domain brings together modern IT concepts, software
+architecture, web technologies, and practical problem-solving
+methodologies designed to solve actual business challenges.
+</p>
+
+</article>
+
+<article class="card reveal">
+
+<span class="num">
+02 • ANALYTICS DOMAIN
+</span>
+
+<h3>
+Data Analytics & Insights
+</h3>
+
+<p>
+Comprehensive analytics workflows including data cleaning,
+exploratory statistical analysis, interactive visualization,
+and narrative dashboard design.
+</p>
+
+</article>
+
+<article class="card reveal">
+
+<span class="num">
+03 • CAREER ORIENTATION
+</span>
+
+<h3>
+Industry Readiness
+</h3>
+
+<p>
+We emphasize real exposure and hands-on projects, enabling candidates
+and clients to master practical technology ecosystems.
+</p>
+
+</article>
+
+<article class="card reveal">
+
+<span class="num">
+CONNECT WITH DESAT INFO TECH
+</span>
+
+<h3>
+Official Digital Channels
+</h3>
+
+<p>
+Follow company updates, training announcements, and technology
+activities through official channels.
+</p>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+
+<div class="wrap">
+
+<div class="section-head reveal">
+
+<div class="kicker">
+WHAT WE OFFER
+</div>
+
+<h2>
+Technology & Data Services
+</h2>
+
+<p>
+Practical technology and data services presented as clear,
+easy-to-read solution areas.
+</p>
+
+</div>
+
+<div class="services">
+
+<article class="service reveal">
+
+<span class="num">01</span>
+
+<h3>
+📊 Data Analytics
+</h3>
+
+<p>
+• Analyze business data and identify useful patterns.<br>
+• Track performance, customer trends, and growth indicators.<br>
+• Support better decisions with data-driven insights.
+</p>
+
+</article>
+
+<article class="service reveal">
+
+<span class="num">02</span>
+
+<h3>
+🧹 Data Preprocessing
+</h3>
+
+<p>
+• Clean and organize raw datasets.<br>
+• Handle missing, duplicate, and incorrect data.<br>
+• Prepare reliable data for analysis and reporting.
+</p>
+
+</article>
+
+<article class="service reveal">
+
+<span class="num">03</span>
+
+<h3>
+📈 Data Visualization
+</h3>
+
+<p>
+• Convert complex data into simple visuals.<br>
+• Create dashboards and informative reports.<br>
+• Highlight important trends and key metrics.
+</p>
+
+</article>
+
+<article class="service reveal">
+
+<span class="num">04</span>
+
+<h3>
+📐 Statistical Analysis
+</h3>
+
+<p>
+• Study patterns, relationships, and trends.<br>
+• Apply statistical methods to datasets.<br>
+• Validate findings and support analytical decisions.
+</p>
+
+</article>
+
+<article class="service reveal">
+
+<span class="num">05</span>
+
+<h3>
+💻 IT & Web Solutions
+</h3>
+
+<p>
+• Build modern and responsive websites.<br>
+• Develop digital management solutions.<br>
+• Customize applications for business requirements.
+</p>
+
+</article>
+
+<article class="service reveal">
+
+<span class="num">06</span>
+
+<h3>
+🎓 Practical Tech Training
+</h3>
+
+<p>
+• Hands-on learning in Python, SQL, Excel, and Power BI.<br>
+• Full-stack development practice.<br>
+• Project-based guidance for industry readiness.
+</p>
+
+</article>
+
+<article class="service reveal">
+
+<span class="num">07</span>
+
+<h3>
+🏢 ERP Business Processes
+</h3>
+
+<p>
+• Manage business transactions and operational data.<br>
+• Organize records, workflows, and reporting.<br>
+• Improve coordination across enterprise processes.
+</p>
+
+</article>
+
+<article class="service reveal">
+
+<span class="num">08</span>
+
+<h3>
+🔬 SAS Analytics
+</h3>
+
+<p>
+• Prepare and analyze business datasets.<br>
+• Apply statistical and reporting workflows.<br>
+• Generate useful analytical insights.
+</p>
+
+</article>
+
+<article class="service reveal">
+
+<span class="num">09</span>
+
+<h3>
+☁️ Cloud-Based Processes
+</h3>
+
+<p>
+• Enable centralized access to business data.<br>
+• Support scalable processing and collaboration.<br>
+• Connect cloud workflows with reporting and insights.
+</p>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CAREERS -->
+
+<section id="careers">
+
+<div class="wrap">
+
+<div class="section-head reveal">
+
+<div class="kicker">
+JOIN OUR TEAM
+</div>
+
+<h2>
+Build Your Future with DESAT
+</h2>
+
+<p>
+We are continuously seeking passionate instructors, skilled data
+analysts, web developers, and ambitious interns who want to shape
+the technology landscape in Salem.
+</p>
+
+</div>
+
+<div class="mini-grid">
+
+<div>
+<b>Real Projects</b>
+<p>
+Work directly on industry datasets and practical software solutions.
+</p>
+</div>
+
+<div>
+<b>Mentorship</b>
+<p>
+Learn alongside experienced data engineers and tech consultants.
+</p>
+</div>
+
+<div>
+<b>Flexible Environment</b>
+<p>
+Collegial, supportive, and growth-oriented workspace.
+</p>
+</div>
+
+<div>
+<b>Career Acceleration</b>
+<p>
+Fast-track your experience with certified skill credentials.
+</p>
+</div>
+
+</div>
+
+<h3 style="margin-top:45px">
+Current Openings
+</h3>
+
+<div class="career">
+
+<article class="job reveal">
+
+<span class="num">
+DATA ANALYST INTERN
+</span>
+
+<h3>
+Data Analyst Intern
+</h3>
+
+<p>
+📍 Salem, Tamil Nadu &nbsp;
+⏰ Full-Time / On-site Internship
+</p>
+
+<a class="btn primary" href="#contact">
+Apply Now
+</a>
+
+</article>
+
+<article class="job reveal">
+
+<span class="num">
+JUNIOR WEB DEVELOPER
+</span>
+
+<h3>
+Junior Web Developer
+</h3>
+
+<p>
+📍 Salem, Tamil Nadu &nbsp;
+⏰ Full-Time Junior Level
+</p>
+
+<a class="btn primary" href="#contact">
+Apply Now
+</a>
+
+</article>
+
+<article class="job reveal">
+
+<span class="num">
+TECHNICAL TRAINER
+</span>
+
+<h3>
+Technical Trainer (Python & SQL)
+</h3>
+
+<p>
+📍 Salem, Tamil Nadu &nbsp;
+⏰ Part-Time / Contact Faculty
+</p>
+
+<a class="btn primary" href="#contact">
+Apply Now
+</a>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- DATA ANALYTICS -->
+
+<section id="analytics">
+
+<div class="wrap">
+
+<div class="section-head reveal">
+
+<div class="kicker">
+DATA FRAMEWORK
+</div>
+
+<h2>
+From raw data to actionable insight.
+</h2>
+
+<p>
+Data analytics bridges the gap between raw figures and smart strategic
+decisions. Our framework emphasizes systematic preparation,
+exploratory analysis, and crisp visual communication.
+</p>
+
+</div>
+
+<div class="process">
+
+<div class="step reveal">
+
+<strong>01</strong>
+
+<h3>
+Collection & Audit
+</h3>
+
+<p>
+Gather relevant data feeds, database tables, and external sources securely.
+</p>
+
+</div>
+
+<div class="step reveal">
+
+<strong>02</strong>
+
+<h3>
+Preparation & Cleaning
+</h3>
+
+<p>
+Handle missing values, normalize schema, and eliminate structural anomalies.
+</p>
+
+</div>
+
+<div class="step reveal">
+
+<strong>03</strong>
+
+<h3>
+Statistical Analysis
+</h3>
+
+<p>
+Discover correlations, patterns, statistical distributions,
+and predictive trends.
+</p>
+
+</div>
+
+<div class="step reveal">
+
+<strong>04</strong>
+
+<h3>
+Interactive Visualization
+</h3>
+
+<p>
+Deliver executive summaries, live dashboards,
+and decision-ready visual insights.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- INTERNSHIP -->
+
+<section id="internship">
+
+<div class="wrap">
+
+<div class="section-head reveal">
+
+<div class="kicker">
+INTERNSHIP PROGRAM
+</div>
+
+<h2>
+Practical exposure for ambitious technology professionals.
+</h2>
+
+<p>
+Our intensive internship program equips students and graduates
+with practical experience in analytics tools, project building,
+and industry protocols.
+</p>
+
+</div>
+
+<div class="card reveal">
+
+<span class="num">
+DATA ANALYST INTERNSHIP
+</span>
+
+<h3>
+Learn. Analyze. Apply.
+</h3>
+
+<p>
+The Data Analyst Internship program offers direct hands-on exposure
+to data manipulation with Python/SQL, dashboard construction in
+Power BI, statistical methods, and real client project scenarios.
+</p>
+
+<div class="mini-grid">
+
+<div>
+<small>Domain</small>
+<br>
+Data Analytics & IT
+</div>
+
+<div>
+<small>Location</small>
+<br>
+Salem, Tamil Nadu
+</div>
+
+<div>
+<small>Duration</small>
+<br>
+1 to 3 Months
+</div>
+
+<div>
+<small>Certification</small>
+<br>
+Industry Verified
+</div>
+
+</div>
+
+<br>
+
+<a class="btn primary" href="#contact">
+Apply for Internship
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- WORKFLOW -->
+
+<section>
+
+<div class="wrap">
+
+<div class="workflow reveal">
+
+<div class="kicker">
+● LIVE ENTERPRISE WORKFLOW
+</div>
+
+<h2>
+ERP + SAS Analytics + Cloud Processes
+</h2>
+
+<p style="color:var(--muted);line-height:1.7">
+DESAT INFO TECH’s technology environment can be presented around
+connected enterprise workflows: operational data enters business
+processes, moves through centralized systems, reaches analytics layers,
+and becomes dashboards, reports, and actionable insights.
+</p>
+
+<div class="flowline">
+
+<div>
+ERP<br>
+BUSINESS PROCESS
+</div>
+
+<div>
+SAS<br>
+ANALYTICS
+</div>
+
+<div>
+CLOUD<br>
+DATA
+</div>
+
+<div>
+REPORTS<br>
+& BI
+</div>
+
+</div>
+
+<div class="process">
+
+<div class="step">
+
+<strong>01 • CAPTURE</strong>
+
+<h3>
+Operational Data
+</h3>
+
+<p>
+Business activities generate structured information across
+day-to-day workflows.
+</p>
+
+</div>
+
+<div class="step">
+
+<strong>02 • MANAGE</strong>
+
+<h3>
+ERP Process Layer
+</h3>
+
+<p>
+Enterprise workflows organize transactions, records,
+coordination, and process status.
+</p>
+
+</div>
+
+<div class="step">
+
+<strong>03 • ANALYZE</strong>
+
+<h3>
+SAS & Analytics
+</h3>
+
+<p>
+Data can move into analytical workflows for preparation,
+statistics, reporting, and insight generation.
+</p>
+
+</div>
+
+<div class="step">
+
+<strong>04 • DELIVER</strong>
+
+<h3>
+Cloud & Dashboards
+</h3>
+
+<p>
+Insights are presented through accessible cloud-enabled
+reporting and decision-support views.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="wrap">
+
+<div class="section-head reveal">
+
+<div class="kicker">
+GET IN TOUCH
+</div>
+
+<h2>
+Connect with DESAT INFO TECH.
+</h2>
+
+<p>
+Have questions about our internship programs, technological services,
+or career openings? Reach out to our Salem team directly.
+</p>
+
+</div>
+
+<div class="contact">
+
+<div class="details">
+
+<div class="detail">
+
+<small>
+EMAIL ADDRESS
+</small>
+
+<a href="mailto:desatinfotech@gmail.com">
+desatinfotech@gmail.com
+</a>
+
+</div>
+
+<div class="detail">
+
+<small>
+PHONE NUMBER
+</small>
+
+<a href="tel:+919715012063">
++91 97150 12063
+</a>
+
+</div>
+
+<div class="detail">
+
+<small>
+OFFICIAL WEBSITE
+</small>
+
+<a href="https://www.desatinfotech.in" target="_blank">
+www.desatinfotech.in
+</a>
+
+</div>
+
+<div class="detail">
+
+<small>
+OFFICE ADDRESS
+</small>
+
+2nd Floor, 380 / 681, Gugai,<br>
+Near Axis Bank, Trichy Main Rd,<br>
+Salem - 636 006, Tamil Nadu
+
+</div>
+
+</div>
+
+<form onsubmit="event.preventDefault();document.getElementById('sent').textContent='✓ Enquiry submitted successfully!';this.reset()">
+
+<label>
+Your Name *
+<input required placeholder="John Doe">
+</label>
+
+<label>
+Your Email *
+<input type="email" required placeholder="john@example.com">
+</label>
+
+<label>
+Subject *
+<input required placeholder="Internship / Service Inquiry">
+</label>
+
+<label>
+Your Message *
+<textarea required></textarea>
+</label>
+
+<button class="btn primary" type="submit">
+Submit Message
+</button>
+
+<small id="sent" style="color:var(--accent)"></small>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="wrap foot">
+
+<div>
+
+<b style="color:#000">
+D DESAT INFO TECH
+</b>
+
+<p>
+Technology-focused organization based in Salem, Tamil Nadu,
+specializing in data analytics, IT solutions, practical learning,
+and career development.
+</p>
+
+</div>
+
+<div>
+
+<b style="color:#000">
+Quick Links
+</b>
+
+<p>
+
+<a href="#vision">Vision</a> ·
+<a href="#about">About</a> ·
+<a href="#services">Services</a> ·
+<a href="#careers">Careers</a> ·
+<a href="#internship">Internships</a> ·
+<a href="#contact">Contact</a>
+
+</p>
+
+</div>
+
+<div>
+
+<b style="color:#000">
+Location
+</b>
+
+<p>
+380/681, 2nd Floor, Gugai,<br>
+Trichy Main Road, Salem,<br>
+Tamil Nadu - 636006
+</p>
+
+</div>
+
+</div>
+
+<div class="wrap" style="margin-top:30px">
+© DESAT INFO TECH. All rights reserved.
+</div>
+
+</footer>
+
+<!-- ADMIN LOGIN -->
+
+<section id="admin-login" class="admin-page" style="display:none">
+
+<a class="admin-brand" href="#home">
+D DESAT INFO TECH
+</a>
+
+<div class="admin-card">
+
+<div class="admin-logo">
+D
+</div>
+
+<div class="kicker">
+ADMIN PORTAL
+</div>
+
+<h1>
+Admin Login
+</h1>
+
+<p>
+Sign in to access the DESAT INFO TECH administration area.
+</p>
+
+<form onsubmit="event.preventDefault();document.getElementById('admin-msg').textContent='Demo login: connect this form to your backend authentication.'">
+
+<label>
+Admin Email
+<input
+type="email"
+required
+placeholder="admin@desatinfotech.in">
+</label>
+
+<label>
+Admin Password
+<input
+type="password"
+required
+placeholder="Enter password">
+</label>
+
+<button class="btn primary" type="submit">
+Sign In
+</button>
+
+<div id="admin-msg" class="admin-msg"></div>
+
+</form>
+
+<a class="back" href="#home">
+← Back to Main Website
+</a>
+
+</div>
+
+</section>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+const io =
+new IntersectionObserver(
+es =>
+es.forEach(
+e =>
+{
+if(e.isIntersecting)
+e.target.classList.add('show')
+}
+),
+{
+threshold:.08
+}
+);
+
+document
+.querySelectorAll('.reveal')
+.forEach(x=>io.observe(x));
+
+
+function showAdmin(){
+
+document.querySelector('main').style.display='none';
+
+document.querySelector('footer').style.display='none';
+
+document.querySelector('.top').style.display='none';
+
+document.querySelector('.nav').style.display='none';
+
+document.getElementById('admin-login').style.display='flex';
+
+}
+
+
+function showHome(){
+
+document.querySelector('main').style.display='block';
+
+document.querySelector('footer').style.display='block';
+
+document.querySelector('.top').style.display='flex';
+
+document.querySelector('.nav').style.display='flex';
+
+document.getElementById('admin-login').style.display='none';
+
+}
+
+
+window.addEventListener(
+'hashchange',
+() =>
+location.hash==='#admin-login'
+?
+showAdmin()
+:
+showHome()
+);
+
+
+if(location.hash==='#admin-login')
+showAdmin();
+
+</script>
+
+</body>
+</html>
